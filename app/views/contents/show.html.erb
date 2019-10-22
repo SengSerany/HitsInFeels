@@ -1,0 +1,9 @@
+<div class="container">
+    <h1><%=@content.title%></h1>
+    <p><%=@content.origin%></p>
+    <div class="vid-home">
+		<% @video.embed_html %>
+		<iframe src="http://www.youtube.com/embed/<%=@id_video %>" frameborder="0"></iframe>
+    <p><%= @content.description %></p>
+	</div>
+</div>
