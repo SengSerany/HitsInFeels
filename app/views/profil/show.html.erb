@@ -1,5 +1,9 @@
 <div class="container">
-    <h1>Mon mail: <%= @user.email %></h1>
+    <br/>
+    <div class="d-flex justify-content-between">
+        <h1>Mon mail: <%= @user.email %></h1>
+        <%= link_to "Editer mon profil", edit_profil_path(@user.id) %>
+    </div>
     <br/>
     <h3>Mes listes</h3>
     <% @user.list.each do |list| %>
