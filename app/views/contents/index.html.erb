@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Les contenues</h1>
+        <% @contents.reverse.each do |content| %>
+        <a href="<%= content_path(content.id)%>"><%= content.title %><br/>
+        <%= content.origin %><br/>
+        <%= content.created_at %></a>
+        <br/><br/>
+        <% end %>
+</div>

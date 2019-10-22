@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Mon mail: <%= @user.email %></h1>
+    <br/>
+    <h3>Mes listes</h3>
+    <% @user.list.each do |list| %>
+        <br />
+        <h5><%= list.title %></h5>
+        <% list.content_in_lists.reverse.each do |content_in_list| %>
+           <a href="<%= content_path(content_in_list.content.id) %>"> <%= content_in_list.content.title %></a> <br/>
+        <% end %>
+    <% end %>
+</div>

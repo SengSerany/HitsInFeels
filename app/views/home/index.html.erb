@@ -1,2 +1,18 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+    <br/>
+        <h3>Récents</h3>
+        <hr />
+
+        <div class="d-flex justify-content-between">
+            <% @contents.reverse.first(4).each do |content| %>
+            <a href="<%= content_path(content.id)%>"><%= content.title.truncate(27) %><br/>
+            <%= content.origin.truncate(27) %><br/>
+            <%= content.created_at %></a>
+            <br/>
+            <% end %>
+        </div>
+        <br/>
+        <div class="d-flex justify-content-end">
+            <%= link_to "Voir tout", contents_path %>
+        </div>
+</div>

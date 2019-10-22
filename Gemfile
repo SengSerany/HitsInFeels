@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'yt'
 gem 'rspec'
 gem 'binding_of_caller'
 gem 'devise'
