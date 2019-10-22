@@ -4,6 +4,8 @@
     <div class="vid-home">
 		<% @video.embed_html %>
 		<iframe src="http://www.youtube.com/embed/<%=@id_video %>" frameborder="0"></iframe>
-    <p><%= @content.description %></p>
+    <p><%= @content.description %><br/><br/>
+    Posté par:
+    <a href="<%= profil_path(@content.user.id)%>"><%= @content.user.profil.first_name %> <%= @content.user.profil.last_name %></a></p>
 	</div>
 </div>
