@@ -1,4 +1,4 @@
 class Content < ApplicationRecord
   belongs_to :user
-  has_many :content_in_lists, dependent: :nullify
+  has_many :lists, through: :content_in_lists, dependent: :nullify
 end
