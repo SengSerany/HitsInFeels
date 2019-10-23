@@ -1,20 +1,33 @@
 <div class="container">
     <br/>
     <% if @profil.first_name == nil || @profil.last_name == nil || @profil.birthday == nil || @profil.city == nil || @profil.gender == ""%>
-    <h2>Pense à renseigner ton profil avec le lien "modifier mon profil" ;)</h2>
+    <h2>Pense à renseigner ton profil avec le lien "Editer mon profil" ;)</h2>
     <% end %>
-    <div class="d-flex justify-content-between">
-     <% if @profil.first_name != nil && @profil.last_name != nil%>
-        <h1><%= @profil.first_name %> <%= @profil.last_name%></h1>
-    <% end %>
-        <% if @profil.user_id == current_user.id%>
-            <%= link_to "Editer mon profil", edit_profil_path(@profil.user.id) %>
-        <% end %>
+    <div class="row justify-content-between">
+        <div class="col-10">
+            <% if @profil.first_name != nil && @profil.last_name != nil%>
+                <h1><%= @profil.first_name %> <%= @profil.last_name%></h1>
+            <% end %>
+        </div>
+        <div class="col-2">
+            <% if @profil.user_id == current_user.id%>
+                <%= link_to "Editer mon profil", edit_profil_path(@profil.id) %>
+            <% end %>
+        </div>
     </div>
     <p><% if @profil.gender == "Homme" || @profil.gender == "Femme" %><%= @profil.gender %> -<%end%> <% if @profil.birthday != nil %> <%= @profil_age %> ans<br/><% end %>
     <%= @profil.city%> </p>
     <br/>
-    <h3>Mes listes</h3>
+    <div class="row">
+        <div class="col-2">
+            <h3>Mes listes</h3>
+        </div>
+        <div class="col">
+            <% if @profil.user_id == current_user.id%>
+                <%= link_to "créer une liste", new_list_path %>
+            <% end %>
+        </div>
+    </div>
     <% @profil.user.list.each do |list| %>
         <br />
         <h5><%= list.title %></h5>
