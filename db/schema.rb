@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_141342) do
+ActiveRecord::Schema.define(version: 2019_10_23_084812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 2019_10_22_141342) do
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
+  create_table "emotion_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lists", force: :cascade do |t|
     t.bigint "user_id"
     t.string "title"
@@ -55,6 +61,15 @@ ActiveRecord::Schema.define(version: 2019_10_22_141342) do
     t.index ["user_id"], name: "index_profils_on_user_id"
   end
 
+  create_table "tags_in_contents", force: :cascade do |t|
+    t.bigint "content_id"
+    t.bigint "emotion_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_tags_in_contents_on_content_id"
+    t.index ["emotion_tag_id"], name: "index_tags_in_contents_on_emotion_tag_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -63,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_141342) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin?", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -72,4 +88,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_141342) do
   add_foreign_key "contents", "users"
   add_foreign_key "lists", "users"
   add_foreign_key "profils", "users"
+  add_foreign_key "tags_in_contents", "contents"
+  add_foreign_key "tags_in_contents", "emotion_tags"
 end

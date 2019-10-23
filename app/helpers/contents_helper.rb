@@ -12,12 +12,12 @@ module ContentsHelper
         return @id_video
     end
 
+    private
+
     def add_to_my_list
         ContentInList.create(content: @content, list_id: List.find_by(title: "Mes contenues ajoutés", user: current_user).id)
     end
-
-    private
-
+    
     def permit_content
         params.require(:content).permit(:title, :link, :origin, :description)
     end
