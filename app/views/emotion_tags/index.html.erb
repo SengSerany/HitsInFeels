@@ -1,9 +1,0 @@
-<div class="container">
-    <br/>
-        <h1>Les contenues par émotion</h1>
-    <br/>
-        <% @emotion_tags.sort_by{ |emotion| emotion.name.downcase }
-.each do |emotion| %>
-        <%= emotion.name %><br/>
-        <% end %>
-</div>
