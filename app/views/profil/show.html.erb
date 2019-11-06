@@ -13,10 +13,6 @@
             <% if @profil.user_id == current_user.id%>
                 <%= link_to "Editer mon profil", edit_profil_path(@profil.id) %>
             <% end %>
-            <% if @profil.user.admin? == true %>
-            <br/>
-            <%= link_to "Créer des tags", new_emotion_tag_path %>
-            <% end %>
         </div>
     </div>
     <p><% if @profil.gender == "Homme" || @profil.gender == "Femme" %><%= @profil.gender %> -<%end%> <% if @profil.birthday != nil %> <%= @profil_age %> ans<br/><% end %>

@@ -20,7 +20,7 @@ class ContentsController < ApplicationController
     @content.user_id = current_user.id
     if @content.save
       add_to_my_list
-      redirect_to new_emotion_tag_path
+      redirect_to @content
     else
       render new_content_path
     end
